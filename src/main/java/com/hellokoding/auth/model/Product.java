@@ -11,8 +11,8 @@ public class Product {
 	private Long id;
 	private String diachi;
 	private String thanhpho;
-	private int dai;
-	private int rong;
+	private float dai;
+	private float rong;
 	private String gia;
 	private String phapli;
 	private String hientrang;
@@ -27,16 +27,28 @@ public class Product {
 		this.id = id;
 	}
 
-	public int getDai() {
-		return dai;
-	}
+	
 
 	public void setDai(int dai) {
 		this.dai = dai;
 	}
 
-	public int getRong() {
+	
+
+	public float getDai() {
+		return dai;
+	}
+
+	public void setDai(float dai) {
+		this.dai = dai;
+	}
+
+	public float getRong() {
 		return rong;
+	}
+
+	public void setRong(float rong) {
+		this.rong = rong;
 	}
 
 	public void setRong(int rong) {
