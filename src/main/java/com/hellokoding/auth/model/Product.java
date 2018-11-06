@@ -2,6 +2,8 @@ package com.hellokoding.auth.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,8 +18,15 @@ public class Product {
 	private String gia;
 	private String phapli;
 	private String hientrang;
+	@ManyToOne
+	@JoinColumn(name="idc")
+	private categoryProduct category;
 
 	
+
+	public Product() {
+		super();
+	}
 
 	public Long getId() {
 		return id;
@@ -94,5 +103,15 @@ public class Product {
 	public void setThanhpho(String thanhpho) {
 		this.thanhpho = thanhpho;
 	}
+
+	public categoryProduct getCategory() {
+		return category;
+	}
+
+	public void setCategory(categoryProduct category) {
+		this.category = category;
+	}
+
+	
 
 }
