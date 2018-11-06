@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/templates/403.html=UTF-8
+encoding//src/main/resources/templates/admin/dashboard.html=UTF-8
+encoding//src/main/resources/templates/admin/product_form.html=UTF-8
+encoding//src/main/resources/templates/admin/product_list.html=UTF-8
+encoding//src/main/resources/templates/admin/userform.html=UTF-8
+encoding//src/main/resources/templates/admin/userlist.html=UTF-8
+encoding/<project>=UTF-8
