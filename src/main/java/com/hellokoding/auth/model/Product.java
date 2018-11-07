@@ -15,7 +15,9 @@ public class Product {
 	private String thanhpho;
 	private float dai;
 	private float rong;
-	private String gia;
+	private float don_gia;
+	private float gia_tri;
+	
 	private String phapli;
 	private String hientrang;
 	@ManyToOne
@@ -64,12 +66,22 @@ public class Product {
 		this.rong = rong;
 	}
 
-	public String getGia() {
-		return gia;
+	
+
+	public float getDon_gia() {
+		return don_gia;
 	}
 
-	public void setGia(String gia) {
-		this.gia = gia;
+	public void setDon_gia(float don_gia) {
+		this.don_gia = don_gia;
+	}
+
+	public float getGia_tri() {
+		return gia_tri;
+	}
+
+	public void setGia_tri(float gia_tri) {
+		this.gia_tri = gia_tri;
 	}
 
 	public String getPhapli() {

@@ -10,30 +10,37 @@ import javax.persistence.Table;
 @Table(name="category")
 public class categoryProduct {
 	@Id
-private Long idc;
+private Long id;
 private String name;
 
 @OneToMany(mappedBy="category")
 private List<Product> product;
 
-public categoryProduct() {
-	super();
+public Long getId() {
+	return id;
 }
 
-public Long getIdc() {
-	return idc;
+
+public void setId(Long id) {
+	this.id = id;
 }
 
-public void setIdc(Long idc) {
-	this.idc = idc;
-}
 
 public String getName() {
 	return name;
 }
+
+
 public void setName(String name) {
 	this.name = name;
 }
+
+
+public categoryProduct() {
+	super();
+}
+
+
 public List<Product> getProduct() {
 	return product;
 }

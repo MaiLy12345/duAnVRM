@@ -10,7 +10,7 @@
 	<div id="page-wrapper">
 	    <div class="row">
 	        <div class="col-sm-12">
-	            <h3 class="page-header">Quản Lí Sản Phẩm</h3>
+	            <h3 class="page-header">Quản Lý Sản Phẩm</h3>
 	        </div>
 	        <!-- /.col-sm-12 -->
 	    </div>
@@ -40,7 +40,8 @@
 	                                <th width="">Thành Phố</th>
                                     <th width="">Dài</th>
                                     <th width="">Rộng</th>
-                                    <th width="">Giá</th>
+                                       <th width="">Đơn giá</th>
+                                    <th width="">Giá trị</th>
                                     <th width="">Pháp Lí</th>
                                     <th width="">Hiện trạng</th>
                                     <th width="">Action</th>
@@ -53,7 +54,8 @@
                                    	<td th:text="${product.rong}"></td>
                                    	<td th:text="${product.dai}"></td>
                                    	<td th:text="${product.rong}"></td>
-                                   	<td th:text="${product.gia}"></td>
+                                   	   	<td th:text="${product.don_gia}"></td>
+                                   	<td th:text="${product.gia_tri}"></td>
                                    	<td th:text="${product.phapli}"></td>
                                    	<td th:text="${product.hientrang}"></td>
                                     <td>
