@@ -15,7 +15,8 @@
 				<!-- /.col-sm-12 -->
 			</div>
 			<!-- /.row -->
-
+			<a style="margin: 5px" th:href="@{/product/add}"
+				class="btn btn-success">Thêm sản phẩm</a>
 			<div class="row">
 				<div class="col-sm-12">
 					<div th:if="${success}"
@@ -61,22 +62,20 @@
 										<td th:text="${product.phapli}"></td>
 										<td th:text="${product.hientrang}"></td>
 										<td>
-											<div class="dropdown">
-												<button class="btn btn-danger btn-sm dropdown-toggle"
-													data-toggle="dropdown">
-													Hành Động <span class="caret"></span>
-												</button>
-												<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-
-													<li><a
-														th:href="@{/product/{id}/edit(id=${product.id})}"> Sửa
-													</a></li>
-													<li><a
-														th:href="@{/product/{id}/delete(id=${product.id})}">
-
-															Xóa </a></li>
-												</ul>
-											</div>
+										<div class="dropdown">
+														<button class="btn btn-danger dropdown-toggle"
+															data-toggle="dropdown">
+															Tùy chọn <span class="caret"></span>
+														</button>
+														<ul class="dropdown-menu">
+															<li style="width:95px;"><a th:href="@{/product/{id}/edit(id=${product.id})}" class="btn btn-danger" >
+																	Sửa </a></li>
+															<li><a
+																th:href="@{/product/{id}/delete(id=${product.id})}" class="btn btn-danger" style="width:95px;"> Xóa
+															</a></li>
+														</ul>
+													</div>
+											
 										</td>
 									</tr>
 								</tbody>
@@ -96,7 +95,6 @@
 	</div>
 
 	<script>
-	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 		$(document).ready(function() {
 			$('#dataTables-example').DataTable({
 				responsive : true
