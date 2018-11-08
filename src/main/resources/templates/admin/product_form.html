@@ -23,44 +23,44 @@
 							<form action="#" th:action="@{/product/save}"
 								th:object="${product}" method="POST">
 								<div class="form-group">
-									<label> Mã</label> <input
-										type="number" class="form-control" th:field="*{id}"
+									<label> Mã</label> <input type="number" class="form-control"
+										th:field="*{id}" th:required="required" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label> Địa chỉ</label> <input type="text" class="form-control"
+										th:field="*{diachi}" th:required="required" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label> Thành Phố</label> <input type="text"
+										class="form-control" th:field="*{thanhpho}"
 										th:required="required" /> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Địa chỉ</label> <input
-										type="text" class="form-control" th:field="*{diachi}"
-										th:required="required"  /> <span class="error"></span>
+									<label> Dài</label> <input type="number" class="form-control"
+										th:field="*{dai}" th:required="required" /> <span
+										class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Thành Phố</label> <input
-										type="text" class="form-control" th:field="*{thanhpho}"
+									<label> Rộng</label> <input type="number" class="form-control"
+										th:field="*{rong}" th:required="required" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label> Đơn giá</label> <input type="number"
+										class="form-control" th:field="*{don_gia}"
 										th:required="required" /> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Dài</label> <input
-										type="number" class="form-control" th:field="*{dai}"
+									<label> Giá tri</label> <input type="number"
+										class="form-control" th:field="*{gia_tri}"
 										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Rộng</label> <input
-										type="number" class="form-control" th:field="*{rong}"
-										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Đơn giá</label> <input
-										type="number" class="form-control" th:field="*{don_gia}"
-										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Giá tri</label> 
-									<input type="number" class="form-control" th:field="*{gia_tri}"
-										th:required="required"  /> <span class="error"></span>
 								</div>
 
 								<div class="form-group">
-									<label>Hiện Trạng</label> 
-									<select th:field="*{hientrang}" class="form-control">
+									<label>Hiện Trạng</label> <select th:field="*{hientrang}"
+										class="form-control">
 										<option value="Đang bán">Đang bán</option>
 										<option value="Đã bán">Đã bán</option>
 										<option value="Chưa được thuê">Chưa được thuê</option>
@@ -70,11 +70,20 @@
 									</select> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Pháp Lý</label> <input
-										type="text" class="form-control" th:field="*{phapli}"
-										th:required="required" /> <span class="error"></span>
+									<label> Pháp Lý</label> <input type="text" class="form-control"
+										th:field="*{phapli}" th:required="required" /> <span
+										class="error"></span>
 								</div>
-
+								<div class="form-group">
+									<label>Loại sản phẩm</label> 
+									<select th:field="*{category}"
+										class="form-control"  >
+										<option th:each="loaiSp:${category_product}" 
+										th:value="${loaiSp.id}"  th:utext="${loaiSp.name}"></option>
+										
+									
+									</select> <span class="error"></span>
+								</div>
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-save"></i>Lưu
 								</button>

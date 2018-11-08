@@ -12,22 +12,33 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hellokoding.auth.model.Product;
 import com.hellokoding.auth.service.ProductService;
+import com.hellokoding.auth.service.categoryProductService;
 
 
 @Controller
 public class ProductController {
 	@Autowired
 	private ProductService productservice;
+	@Autowired
+	private categoryProductService categoryProductService;
 
 	@RequestMapping(value = "/product/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		model.addAttribute("products", productservice.findAll());
+		
+		
 		return "admin/product_list";
 	}
 	
 	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
 	public String add(Model model) {
 		model.addAttribute("product", new Product());
+		return "admin/product_form";
+	}
+	/*lay danh sach loai san pham*/
+	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
+	public String listCategory(Model model) {
+		model.addAttribute("category_product", categoryProductService.findAll());
 		return "admin/product_form";
 	}
 
