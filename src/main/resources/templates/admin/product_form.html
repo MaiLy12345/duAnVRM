@@ -79,7 +79,8 @@
 									<select th:field="*{category}"
 										class="form-control"  >
 										<option th:each="loaiSp:${category_product}" 
-										th:value="${loaiSp.id}"  th:utext="${loaiSp.name}"></option>
+										th:value="${loaiSp.id}"  th:text="${loaiSp.name}">
+										</option>
 										
 									
 									</select> <span class="error"></span>
@@ -99,7 +100,7 @@
 			<!-- /.row -->
 		</div>
 		<!-- /#page-wrapper -->
-
+	
 	</div>
 
 </body>
