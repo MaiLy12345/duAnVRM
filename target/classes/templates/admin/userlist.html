@@ -15,8 +15,8 @@
 				<!-- /.col-sm-12 -->
 			</div>
 			<!-- /.row -->
-			<a style="margin: 5px" th:href="@{/user/add}"
-				class="btn btn-success">Thêm nhân viên</a>
+			<a style="margin: 5px" th:href="@{/user/add}" class="btn btn-success">Thêm
+				nhân viên</a>
 			<div class="row">
 				<div class="row">
 					<div class="col-sm-12">
@@ -39,19 +39,17 @@
 										id="dataTables-example">
 										<thead>
 											<tr>
-												<th>MÃ</th>
-												<th width="">Tên Người Dùng</th>
+									
+													<th width="">ID</th>
 												<th width="">Họ tên nhân viên</th>
 												<th width="">Giới tính</th>
-												<th width="">Chứng minh</th>
+									
 												<th width="">Số điện thoại</th>
 												<th width="">Địa Chỉ</th>
 												<th width="">Năm Sinh</th>
-												<th width="">Quê Quán</th>
+									
 												<th width="">Vị trí công việc</th>
-												<th width="">Chuyên môn</th>
-												<th width="">Ngày vào công ty</th>
-												<th width="">Ngày nghỉ</th>
+											
 												<th width="">Trạng thái</th>
 												<th width="">Tùy chọn</th>
 
@@ -59,19 +57,18 @@
 										</thead>
 										<tbody>
 											<tr th:each="users : ${users}">
-												<td th:text="${users.id}"></td>
-												<td th:text="${users.username}"></td>
+											
+											<td th:text="${users.id}"></td>
 												<td th:text="${users.name}"></td>
 												<td th:text="${users.gioitinh}"></td>
-												<td th:text="${users.cmnd}"></td>
+											
 												<td th:text="${users.sdt}"></td>
 												<td th:text="${users.diachi}"></td>
 												<td th:text="${users.namsinh}"></td>
-												<td th:text="${users.quequan}"></td>
+										
 												<td th:text="${users.vitricongviec}"></td>
-												<td th:text="${users.chuyenmon}"></td>
-												<td th:text="${users.thoigianvao}"></td>
-												<td th:text="${users.thoigiannghi}"></td>
+										
+										
 												<td th:text="${users.trangThai}"></td>
 												<td>
 													<div class="dropdown">
@@ -79,12 +76,12 @@
 															data-toggle="dropdown">
 															Tùy chọn <span class="caret"></span>
 														</button>
-														<ul class="dropdown-menu">
-															<li><a th:href="@{/user/{id}/edit(id=${users.id})}"  style="width:95px;">
-																	Sửa </a></li>
+														<ul class="dropdown-menu" style="min-width: 91px !important;">
+															<li><a th:href="@{/user/{id}/edit(id=${users.id})}"
+																class="btn btn-default"> Sửa </a></li>
 															<li><a
-																th:href="@{/user/{id}/delete(id=${users.id})}" style="width:95px;"> Xóa
-															</a></li>
+																th:href="@{/user/{id}/delete(id=${users.id})}"
+																class="btn btn-default"> Xóa </a></li>
 														</ul>
 													</div>
 												</td>
@@ -106,14 +103,14 @@
 			<!-- /#page-wrapper -->
 
 		</div>
-		</div>
-		<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-		<!-- 	<script>
+	</div>
+	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	 	<script>
 		$(document).ready(function() {
 			$('#dataTables-example').DataTable({
 				responsive : true
 			});
 		});
-	</script>  -->
+	</script>  
 </body>
 </html>

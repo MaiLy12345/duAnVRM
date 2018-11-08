@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="admin/layout :: head"></head>
+<head th:replace="admin/layout :: head">
+<style type="text/css">
+
+</style>
+</head>
 <body>
 
 	<div id="wrapper">
@@ -62,20 +66,21 @@
 										<td th:text="${product.phapli}"></td>
 										<td th:text="${product.hientrang}"></td>
 										<td>
-										<div class="dropdown">
-														<button class="btn btn-danger dropdown-toggle"
-															data-toggle="dropdown">
-															Tùy chọn <span class="caret"></span>
-														</button>
-														<ul class="dropdown-menu">
-															<li style="width:95px;"><a th:href="@{/product/{id}/edit(id=${product.id})}" class="btn btn-danger" >
-																	Sửa </a></li>
-															<li><a
-																th:href="@{/product/{id}/delete(id=${product.id})}" class="btn btn-danger" style="width:95px;"> Xóa
-															</a></li>
-														</ul>
-													</div>
-											
+											<div class="dropdown">
+												<button class="btn btn-danger dropdown-toggle"
+													data-toggle="dropdown">
+													Tùy chọn <span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu" style="min-width: 91px !important;">
+													<li><a
+														th:href="@{/product/{id}/edit(id=${product.id})}"
+														class="btn btn-default"> Sửa </a></li>
+													<li><a
+														th:href="@{/product/{id}/delete(id=${product.id})}"
+														class="btn btn-default"> Xóa </a></li>
+												</ul>
+											</div>
+
 										</td>
 									</tr>
 								</tbody>
