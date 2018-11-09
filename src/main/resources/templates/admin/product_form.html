@@ -22,45 +22,71 @@
 						<div class="panel-body">
 							<form action="#" th:action="@{/product/save}"
 								th:object="${product}" method="POST">
+								<input type="hidden" class="form-control" th:field="*{id}" />
+
 								<div class="form-group">
-									<label> Mã</label> <input
-										type="number" class="form-control" th:field="*{id}"
+									<label> Thành Phố</label> <input type="text"
+										class="form-control" th:field="*{thanhpho}"
 										th:required="required" /> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Địa chỉ</label> <input
-										type="text" class="form-control" th:field="*{diachi}"
-										th:required="required"  /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Thành Phố</label> <input
-										type="text" class="form-control" th:field="*{thanhpho}"
+									<label>Quận, Huyện</label> <input type="text"
+										class="form-control" th:field="*{quanhuyen}"
 										th:required="required" /> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Dài</label> <input
-										type="number" class="form-control" th:field="*{dai}"
+									<label>Xã, Phường</label> <input type="text"
+										class="form-control" th:field="*{phuongxa}"
 										th:required="required" /> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Rộng</label> <input
-										type="number" class="form-control" th:field="*{rong}"
+									<label> Địa chỉ</label> <input type="text" class="form-control"
+										th:field="*{diachi}" th:required="required" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label>Clip </label> <input type="text" class="form-control"
+										th:required="required" th:field="*{clip}" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label> Dài</label> <input type="number" class="form-control"
+										th:field="*{dai}" th:required="required" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label> Rộng</label> <input type="number" class="form-control"
+										th:field="*{rong}" th:required="required" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label>Diện tích</label> <input type="number"
+										class="form-control" th:field="*{dientich}"
 										th:required="required" /> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Đơn giá</label> <input
-										type="number" class="form-control" th:field="*{don_gia}"
-										th:required="required" /> <span class="error"></span>
+									<label>Hướng</label> <select th:field="*{huong}"
+										class="form-control">
+										<option value="Đông">Đông</option>
+										<option value="Tây">Tây</option>
+										<option value="Nam">Nam</option>
+										<option value="Bắc">Bắc</option>
+									</select> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Giá tri</label> 
-									<input type="number" class="form-control" th:field="*{gia_tri}"
-										th:required="required"  /> <span class="error"></span>
+									<label> Đơn giá</label> <input type="number"
+										class="form-control" th:required="required" /> <span
+										class="error"></span>
+								</div>
+								<div class="form-group">
+									<label> Giá trị</label> <input type="number"
+										class="form-control" th:required="required" /> <span
+										class="error"></span>
 								</div>
 
 								<div class="form-group">
-									<label>Hiện Trạng</label> 
-									<select th:field="*{hientrang}" class="form-control">
+									<label>Hiện Trạng</label> <select th:field="*{hientrang}"
+										class="form-control">
 										<option value="Đang bán">Đang bán</option>
 										<option value="Đã bán">Đã bán</option>
 										<option value="Chưa được thuê">Chưa được thuê</option>
@@ -70,9 +96,9 @@
 									</select> <span class="error"></span>
 								</div>
 								<div class="form-group">
-									<label> Pháp Lý</label> <input
-										type="text" class="form-control" th:field="*{phapli}"
-										th:required="required" /> <span class="error"></span>
+									<label> Pháp Lý</label> <input type="text" class="form-control"
+										th:field="*{phapli}" th:required="required" /> <span
+										class="error"></span>
 								</div>
 
 								<button type="submit" class="btn btn-primary">

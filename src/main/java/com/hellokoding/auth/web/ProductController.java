@@ -1,5 +1,8 @@
 package com.hellokoding.auth.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +29,17 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
-	public String add(Model model) {
+	public String add(Model model, @Valid Product product) {
+		
 		model.addAttribute("product", new Product());
 		return "admin/product_form";
 	}
 
 	@RequestMapping(value = "/product/save", method = RequestMethod.POST)
     public String  save(@Valid Product product,RedirectAttributes redicert) {
+		Date date = new Date();
+		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
+		product.setNgaytao(ft.format(date));
 		productservice.save(product);
 		return "redirect:/product/list";
     }

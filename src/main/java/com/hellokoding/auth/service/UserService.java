@@ -2,23 +2,25 @@ package com.hellokoding.auth.service;
 
 
 
-import java.util.Optional;
-
-import org.springframework.data.jpa.repository.Query;
-
 import com.hellokoding.auth.model.User;
 
+ 
 public interface UserService {
-	
+	//save
 	void save(User user);
+	
+	//fin by username
+	User findByUsername(String username);
 
-	User findByUsername(String email);
-
+	// list user
 	Iterable<User> findAll();
-
+	
+	//Dem
 	Long count();
-
+	
+	//tim kiem theo id
 	User findById(Long id);
-
+	
+	//xoa theo id
 	void delete(Long id);
 }

@@ -26,8 +26,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/login","/fogot-password","/newPassword").permitAll()
-                    .antMatchers("/admin/**").hasRole("ADMIN") 
+                    .antMatchers("/admin/**","/user/**","/product/**","/welcome").hasRole("ADMIN") 
                     .antMatchers("/user/**","/product/**","/welcome").hasRole("USER")
+//                    .antMatchers("").hasRole("DUAN")
+//                    .antMatchers("").hasRole("NHABAN")
+//                    .antMatchers("").hasRole("NHATHUE")
                     .and()
                 .formLogin()
                     .loginPage("/login")
