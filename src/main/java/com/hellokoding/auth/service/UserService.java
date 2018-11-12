@@ -2,6 +2,8 @@ package com.hellokoding.auth.service;
 
 
 
+import java.util.Optional;
+
 import com.hellokoding.auth.model.User;
 
  
@@ -23,4 +25,6 @@ public interface UserService {
 	
 	//xoa theo id
 	void delete(Long id);
+	
+	Optional<User> findByToken(String token);
 }
