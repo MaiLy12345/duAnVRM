@@ -36,12 +36,12 @@ public class ProductController {
 		model.addAttribute("product", new Product());
 		return "admin/product_form";
 	}
-	/*lay danh sach loai san pham*/
+/*	lay danh sach loai san pham
 	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
 	public String listCategory(Model model) {
 		model.addAttribute("category_product", categoryProductService.findAll());
 		return "admin/product_form";
-	}
+	}*/
 
 	@RequestMapping(value = "/product/save", method = RequestMethod.POST)
     public String  save(@Valid Product product,RedirectAttributes redicert) {
