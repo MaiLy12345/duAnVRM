@@ -17,7 +17,7 @@ import com.hellokoding.auth.model.Product;
 import com.hellokoding.auth.service.ProductService;
 import com.hellokoding.auth.service.categoryProductService;
 
-import com.hellokoding.auth.service.categoryProductService;
+
 
 
 @Controller
@@ -25,22 +25,15 @@ public class ProductController {
 	@Autowired
 	private ProductService productservice;
 	@Autowired
-<<<<<<< HEAD
+
 	private categoryProductService categoryService;
 	
 	// danh sah san pham nha cho thue
-	@RequestMapping(value = "/product/list", method = RequestMethod.GET)
-	public String list(Model model) {
-		model.addAttribute("products", productservice.findAll());	
-=======
-	private categoryProductService categoryProductService;
+
 
 	@RequestMapping(value = "/product/list", method = RequestMethod.GET)
 	public String list(Model model) {
-		model.addAttribute("products", productservice.findAll());
-		
-		
->>>>>>> 2f038cf4362dde66cb6dc73d42f3b0d3060ddfb3
+		model.addAttribute("products", productservice.findAll());	
 		return "admin/product_list";
 	}
 	
@@ -51,18 +44,17 @@ public class ProductController {
 		model.addAttribute("product", new Product());
 		return "admin/product_form";
 	}
-<<<<<<< HEAD
+
 	
 	// luu san pham nha cho thue
-=======
-/*	lay danh sach loai san pham
+
 	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
 	public String listCategory(Model model) {
-		model.addAttribute("category_product", categoryProductService.findAll());
+		model.addAttribute("category_product", productservice.findAll());
 		return "admin/product_form";
-	}*/
+	}
 
->>>>>>> 2f038cf4362dde66cb6dc73d42f3b0d3060ddfb3
+
 	@RequestMapping(value = "/product/save", method = RequestMethod.POST)
     public String  save(@Valid Product product,RedirectAttributes redicert) {
 		Date date = new Date();
