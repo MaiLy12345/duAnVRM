@@ -20,11 +20,9 @@
 						<div class="panel-heading">Form Sản Phẩm</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<form action="#" th:action="@{/product/save}"
+							<form action="#" th:action="@{/product/nha-mua/save}"
 								th:object="${product}" method="POST">
-								<input type="hidden" class="form-control" th:field="*{id}" /> <input
-									type="hidden" class="form-control" value="0"
-									th:field="*{category}" />
+								<input type="hidden" class="form-control" th:field="*{id}" />
 								<div class="form-group">
 									<label> Thành Phố</label> <input type="text"
 										class="form-control" th:field="*{thanhpho}"
@@ -110,6 +108,7 @@
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-save"></i>Lưu
 								</button>
+
 							</form>
 						</div>
 						<!-- /.panel-body -->

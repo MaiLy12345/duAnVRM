@@ -53,7 +53,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="catagorys : ${catagorys}">
+									<tr th:each="catagorys : ${catagorys}" th:if="${catagorys.id}!=0">
 										<td th:text="${catagorys.id}"></td>
 										<td th:text="${catagorys.name}"></td>										
 										<td th:text="${catagorys.diachi}"></td>

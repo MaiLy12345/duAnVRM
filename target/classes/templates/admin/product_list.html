@@ -55,8 +55,9 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="product : ${products}">
+									<tr th:each="product : ${products}" th:if="${product.loai} == 'Nhachothue'">										
 										<td th:text="${product.id}"></td>
+										<td th:text="${product.loai}"></td>
 										<td th:text="${product.diachi}"></td>
 										<td th:text="${product.thanhpho}"></td>
 										<td th:text="${product.dai}"></td>
@@ -76,7 +77,7 @@
 														th:href="@{/product/{id}/edit(id=${product.id})}"
 														class="btn btn-default"> Sửa </a></li>
 													<li><a
-														th:href="@{/product/{id}/delete(id=${product.id})}"
+														th:href="@{product/{id}/delete(id=${product.id})}"
 														class="btn btn-default"> Xóa </a></li>
 												</ul>
 											</div>

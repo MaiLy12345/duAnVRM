@@ -2,13 +2,17 @@ package com.hellokoding.auth.service;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hellokoding.auth.model.Category;
 import com.hellokoding.auth.model.Product;
 import com.hellokoding.auth.repository.ProductRepository;
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
@@ -45,5 +49,7 @@ public class ProductServiceImpl implements ProductService{
 		productRepository.delete(id);
 		
 	}
+
+
 
 }

@@ -17,37 +17,15 @@
 			<div class="row">
 				<div class="col-sm-10">
 					<div class="panel panel-primary">
-						<div class="panel-heading">Form Sản Phẩm</div>
+						<div class="panel-heading">Form Sản Phẩm Dự Án</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<form action="#" th:action="@{/product/save}"
+							<form action="#" th:action="@{/user/category/product/save}"
 								th:object="${product}" method="POST">
-								<input type="hidden" class="form-control" th:field="*{id}" /> <input
-									type="hidden" class="form-control" value="0"
-									th:field="*{category}" />
+								<input type="hidden" class="form-control" th:field="*{id}" />
 								<div class="form-group">
-									<label> Thành Phố</label> <input type="text"
-										class="form-control" th:field="*{thanhpho}"
-										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label>Quận, Huyện</label> <input type="text"
-										class="form-control" th:field="*{quanhuyen}"
-										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label>Xã, Phường</label> <input type="text"
-										class="form-control" th:field="*{phuongxa}"
-										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Địa chỉ</label> <input type="text" class="form-control"
-										th:field="*{diachi}" th:required="required" /> <span
-										class="error"></span>
-								</div>
-								<div class="form-group">
-									<label>Clip </label> <input type="text" class="form-control"
-										th:required="required" th:field="*{clip}" /> <span
+									<label>Mã sản phẩm</label> <input type="number" class="form-control"
+										th:field="*{maSpdu}" th:required="required" /> <span
 										class="error"></span>
 								</div>
 								<div class="form-group">
@@ -90,6 +68,8 @@
 										class="form-control">
 										<option value="Đang bán">Đang bán</option>
 										<option value="Đã bán">Đã bán</option>
+										<option value="Chưa được thuê">Chưa được thuê</option>
+										<option value="Đã thuê">Đã thuê</option>
 										<option value="Chưa được thuê">Đang xây dựng</option>
 										<option value="Đã thuê">Đã xây dựng</option>
 									</select> <span class="error"></span>
@@ -100,16 +80,18 @@
 										class="error"></span>
 								</div>
 								<div class="form-group">
-									<label>Tên dự án</label> <select th:field="*{category.id}"
-										class="form-control" id="exampleFormControlSelect1">
-
-										<option value="0">Không</option>
-
-									</select>
+									<label>Tên dự án</label>
+									<select  th:field="*{category.id}" class="form-control" id="exampleFormControlSelect1">
+								
+					            <option th:each="pblist : ${catagorys}" th:value="${{pblist.id}}" th:text="${pblist.name}" ></option>
+									     
+							    </select>
 								</div>
+
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-save"></i>Lưu
 								</button>
+
 							</form>
 						</div>
 						<!-- /.panel-body -->

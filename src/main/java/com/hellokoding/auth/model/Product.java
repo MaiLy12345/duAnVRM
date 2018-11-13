@@ -67,7 +67,7 @@ public class Product {
 	private String clip;
 
 	@ManyToOne
-	@JoinColumn(name = "Maduan") // danh cho nha trong du an
+	@JoinColumn(name = "maduan") // danh cho nha trong du an
 	private Category category;
 
 	public Product() {

@@ -22,8 +22,9 @@
 						<div class="panel-body">
 							<form action="#" th:action="@{/product/save}"
 								th:object="${product}" method="POST">
-								<input type="hidden" class="form-control" th:field="*{id}" />
-
+								<input type="hidden" class="form-control" th:field="*{id}" /> <input
+									type="hidden" class="form-control" value="0"
+									th:field="*{category}" />
 								<div class="form-group">
 									<label> Thành Phố</label> <input type="text"
 										class="form-control" th:field="*{thanhpho}"
@@ -89,8 +90,6 @@
 										class="form-control">
 										<option value="Đang bán">Đang bán</option>
 										<option value="Đã bán">Đã bán</option>
-										<option value="Chưa được thuê">Chưa được thuê</option>
-										<option value="Đã thuê">Đã thuê</option>
 										<option value="Chưa được thuê">Đang xây dựng</option>
 										<option value="Đã thuê">Đã xây dựng</option>
 									</select> <span class="error"></span>
@@ -100,11 +99,17 @@
 										th:field="*{phapli}" th:required="required" /> <span
 										class="error"></span>
 								</div>
+								<div class="form-group">
+									<label>Tên dự án</label> <select th:field="*{category.id}"
+										class="form-control" id="exampleFormControlSelect1">
 
+										<option value="0">Không</option>
+
+									</select>
+								</div>
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-save"></i>Lưu
 								</button>
-
 							</form>
 						</div>
 						<!-- /.panel-body -->

@@ -1,5 +1,7 @@
 package com.hellokoding.auth.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,7 @@ import com.hellokoding.auth.model.Category;
 import com.hellokoding.auth.repository.categoryReponsitory;
 
 @Service
+@Transactional
 public class categoryServiceImpl implements categoryProductService{
 
 	@Autowired

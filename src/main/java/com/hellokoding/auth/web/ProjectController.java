@@ -8,14 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.hellokoding.auth.model.Category;
+import com.hellokoding.auth.model.Product;
+import com.hellokoding.auth.service.ProductService;
 import com.hellokoding.auth.service.categoryProductService;
 
 @Controller
 public class ProjectController {
 	@Autowired
 	private categoryProductService categoryService;
+	@Autowired
+	private ProductService productService;
 
 	@RequestMapping(value = "/user/category/list", method = RequestMethod.GET)
 	public String categoryList(Model model) {
@@ -46,13 +52,51 @@ public class ProjectController {
 		categoryService.delete(id);
 		return "redirect:/user/category/list";
 	}
-	
-	//danh sach san pham theo du an
+
+	// danh sach san pham theo du an
 	@RequestMapping(value = "/user/category/product/{id}/list", method = RequestMethod.GET)
 	public String catagoryProductlist(@PathVariable Long id, Model model) {
-		
-		return "category_product_list";
-	}
-	
+		model.addAttribute("category", categoryService.findByID(id));
+		model.addAttribute("products", productService.findAll());
 
+		return "admin/category_product_list";
+	}
+
+	// duong link toi trang them san pha,
+	@RequestMapping(value = "/user/category/product/add", method = RequestMethod.GET)
+	public String add(Model model) {
+		
+		model.addAttribute("product", new Product());
+		model.addAttribute("catagorys", categoryService.findAll());
+		model.addAttribute("products", productService.findAll());
+		return "admin/category_product_form";
+	}
+
+	// luu san pham vao csdl
+	@RequestMapping(value = "/user/category/product/save", method = RequestMethod.POST)
+	public String save(@Valid Product product) {
+		product.setLoai("Duan");
+		productService.save(product);
+		return "redirect:/user/category/product/"+product.getCategory().getId()+"/list";
+
+	}
+
+	// sua san pham
+	@RequestMapping(value = "/user/category/product/{id}/edit", method = RequestMethod.GET)
+	public String edit(@PathVariable Long id, Model model) {
+		model.addAttribute("catagorys", categoryService.findAll());
+		model.addAttribute("product", productService.findById(id));
+		return "admin/category_product_form";
+	}
+
+	// xoa san pham
+	@RequestMapping(value = "/user/category/product/{id}/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@PathVariable Long id) {
+		ModelAndView model = new ModelAndView();
+		Product product = productService.findById(id);
+		model.setViewName("redirect:/user/category/product/"+product.getCategory().getId()+"/list");		
+		productService.delete(id);
+		return model;
+		
+	}
 }
