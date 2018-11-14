@@ -53,4 +53,10 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userRepository.delete(id);
 	}
+
+	@Override
+	public Optional<User> findByToken(String token) {
+		// TODO Auto-generated method stub
+		return userRepository.findByToken(token);
+	}
 }

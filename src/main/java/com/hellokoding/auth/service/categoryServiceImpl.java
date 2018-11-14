@@ -1,24 +1,30 @@
 package com.hellokoding.auth.service;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hellokoding.auth.model.categoryProduct;
+import com.hellokoding.auth.model.Category;
 import com.hellokoding.auth.repository.categoryReponsitory;
 
 @Service
+@Transactional
 public class categoryServiceImpl implements categoryProductService{
 
-	categoryReponsitory categoryReponsitory;
+	@Autowired
+	private categoryReponsitory categoryReponsitory;
+
 	@Override
-	public void save(categoryProduct category) {
+	public void save(Category category) {
 		// TODO Auto-generated method stub
 		categoryReponsitory.save(category);
+		
 	}
 
 	@Override
-	public Iterable<categoryProduct> findAll() {
+	public Iterable<Category> findAll() {
 		// TODO Auto-generated method stub
-		
 		return categoryReponsitory.findAll();
 	}
 
@@ -29,16 +35,16 @@ public class categoryServiceImpl implements categoryProductService{
 	}
 
 	@Override
-	public categoryProduct findByID(long id) {
+	public Category findByID(long id) {
 		// TODO Auto-generated method stub
-		return categoryReponsitory.getOne(id);
+		return categoryReponsitory.findOne(id);
 	}
 
 	@Override
 	public void delete(long id) {
 		// TODO Auto-generated method stub
 		categoryReponsitory.delete(id);
-		
 	}
-
+	
+	
 }

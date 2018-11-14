@@ -103,9 +103,16 @@
 
 						</a></li>
 
-						<li><a th:href="@{/product/list}"> <i
-								class="glyphicon glyphicon-home"></i> Quản lý sản phẩm
-						</a></li>
+						<li>
+						<a>
+							<i class="glyphicon glyphicon-home"></i> Quản lý sản phẩm
+							<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level collapse">
+							<li><a th:href="@{/user/category/list}">Dự án</a></li>
+							<li><a th:href="@{/product/list}">Nhà cho thuê</a></li>
+							<li><a th:href="@{/product/nha-mua/list}">Nhà bán</a></li>
+						</ul></li>
+					
 
 					</ul>
 				</div>

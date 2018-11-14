@@ -19,7 +19,7 @@
 				<!-- /.col-sm-12 -->
 			</div>
 			<!-- /.row -->
-			<a style="margin: 5px" th:href="@{/product/add}"
+			<a style="margin: 5px" th:href="@{/product/nha-mua/add}"
 				class="btn btn-success">Thêm sản phẩm</a>
 			<div class="row">
 				<div class="col-sm-12">
@@ -55,9 +55,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="product : ${products}" th:if="${product.loai} == 'Nhachothue'">										
+									<tr th:each="product : ${products}" th:if="${product.loai} == 'Nhaban'">
 										<td th:text="${product.id}"></td>
-										<td th:text="${product.loai}"></td>
 										<td th:text="${product.diachi}"></td>
 										<td th:text="${product.thanhpho}"></td>
 										<td th:text="${product.dai}"></td>
@@ -74,10 +73,10 @@
 												</button>
 												<ul class="dropdown-menu" style="min-width: 91px !important;">
 													<li><a
-														th:href="@{/product/{id}/edit(id=${product.id})}"
+														th:href="@{/product/nha-mua/{id}/edit(id=${product.id})}"
 														class="btn btn-default"> Sửa </a></li>
 													<li><a
-														th:href="@{product/{id}/delete(id=${product.id})}"
+														th:href="@{/product/nha-mua/{id}/delete(id=${product.id})}"
 														class="btn btn-default"> Xóa </a></li>
 												</ul>
 											</div>

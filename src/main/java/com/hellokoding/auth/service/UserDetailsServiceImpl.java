@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.Set;
 
+
+// lop xu li dang nhap
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
     @Autowired
@@ -23,13 +25,19 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    	//tim kiem user name
         User user = userRepository.findByUsername(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        //lay quyen
         for (Role role : user.getRoles()){
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+        boolean enabled = user.isTrangThai();
+        boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        boolean accountNonLocked = true;
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),enabled,
+        		accountNonExpired,credentialsNonExpired,accountNonLocked, grantedAuthorities);
     }
 }
