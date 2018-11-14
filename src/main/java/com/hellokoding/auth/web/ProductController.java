@@ -48,11 +48,11 @@ public class ProductController {
 	
 	// luu san pham nha cho thue
 
-	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
 	public String listCategory(Model model) {
 		model.addAttribute("category_product", productservice.findAll());
 		return "admin/product_form";
-	}
+	}*/
 
 
 	@RequestMapping(value = "/product/save", method = RequestMethod.POST)
