@@ -26,15 +26,8 @@ public class UserController {
     
     @Autowired
     private ProductService productService;
-    @Autowired
-    private UserValidator userValidator;
-
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
-
-        return "registration";
-    }
+   
+  
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String registration() {
