@@ -31,14 +31,14 @@ public class ProductController {
 	// danh sah san pham nha cho thue
 
 
-	@RequestMapping(value = "/product/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/cho-thue/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		model.addAttribute("products", productservice.findAll());	
 		return "admin/product_list";
 	}
 	
 	// chuyen toi trang them san pham nha cho thue
-	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/cho-thue/add", method = RequestMethod.GET)
 	public String add(Model model, @Valid Product product) {
 		model.addAttribute("catagorys", categoryService.findAll());
 		model.addAttribute("product", new Product());
@@ -48,14 +48,18 @@ public class ProductController {
 	
 	// luu san pham nha cho thue
 
+<<<<<<< HEAD
 /*	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
+=======
+	@RequestMapping(value = "/product/cho-thuet/add", method = RequestMethod.GET)
+>>>>>>> 3d3710520808655e86f2af5ec184c2f03444ae51
 	public String listCategory(Model model) {
 		model.addAttribute("category_product", productservice.findAll());
 		return "admin/product_form";
 	}*/
 
 
-	@RequestMapping(value = "/product/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/product/cho-thuet/save", method = RequestMethod.POST)
     public String  save(@Valid Product product,RedirectAttributes redicert) {
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
@@ -66,14 +70,14 @@ public class ProductController {
     }
 	
 	// sua san pham nha cho thue
-	@RequestMapping(value = "/product/{id}/edit", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/cho-thue/{id}/edit", method = RequestMethod.GET)
     public String edit(@PathVariable Long id, Model model) {		
 	   model.addAttribute("product", productservice.findById(id));
 	   return "admin/product_form";
     }
 	
 	// xoa san pham nha cho thue
-	@RequestMapping(value = "/product/{id}/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/cho-thue/{id}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable Long id,RedirectAttributes redicert) {
 	   productservice.delete(id);
 	   return "redirect:/product/list";
