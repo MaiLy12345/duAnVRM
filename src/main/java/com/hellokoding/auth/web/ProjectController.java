@@ -23,38 +23,38 @@ public class ProjectController {
 	@Autowired
 	private ProductService productService;
 
-	@RequestMapping(value = "/user/category/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/list", method = RequestMethod.GET)
 	public String categoryList(Model model) {
 		model.addAttribute("catagorys", categoryService.findAll());
 		return "admin/category_list";
 	}
 
-	@RequestMapping(value = "/user/category/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/add", method = RequestMethod.GET)
 	public String categoryAdd(Model model) {
 		model.addAttribute("category", new Category());
 		return "admin/category_form";
 	}
 
-	@RequestMapping(value = "/user/category/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/category/save", method = RequestMethod.POST)
 	public String catagorySave(@Valid Category category) {
 		categoryService.save(category);
-		return "redirect:/user/category/list";
+		return "redirect:/category/list";
 	}
 
-	@RequestMapping(value = "/user/category/{id}/edit", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/{id}/edit", method = RequestMethod.GET)
 	public String catagoryEit(@PathVariable Long id, Model model) {
 		model.addAttribute("category", categoryService.findByID(id));
 		return "admin/category_form";
 	}
 
-	@RequestMapping(value = "/user/category/{id}/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/ucategory/{id}/delete", method = RequestMethod.GET)
 	public String catagoryDelete(@PathVariable Long id, Model model) {
 		categoryService.delete(id);
-		return "redirect:/user/category/list";
+		return "redirect:/category/list";
 	}
 
 	// danh sach san pham theo du an
-	@RequestMapping(value = "/user/category/product/{id}/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/product/{id}/list", method = RequestMethod.GET)
 	public String catagoryProductlist(@PathVariable Long id, Model model) {
 		model.addAttribute("category", categoryService.findByID(id));
 		model.addAttribute("products", productService.findAll());
@@ -63,7 +63,7 @@ public class ProjectController {
 	}
 
 	// duong link toi trang them san pha,
-	@RequestMapping(value = "/user/category/product/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/product/add", method = RequestMethod.GET)
 	public String add(Model model) {
 		
 		model.addAttribute("product", new Product());
@@ -73,16 +73,16 @@ public class ProjectController {
 	}
 
 	// luu san pham vao csdl
-	@RequestMapping(value = "/user/category/product/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/category/product/save", method = RequestMethod.POST)
 	public String save(@Valid Product product) {
 		product.setLoai("Duan");
 		productService.save(product);
-		return "redirect:/user/category/product/"+product.getCategory().getId()+"/list";
+		return "redirect:/category/product/"+product.getCategory().getId()+"/list";
 
 	}
 
 	// sua san pham
-	@RequestMapping(value = "/user/category/product/{id}/edit", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/product/{id}/edit", method = RequestMethod.GET)
 	public String edit(@PathVariable Long id, Model model) {
 		model.addAttribute("catagorys", categoryService.findAll());
 		model.addAttribute("product", productService.findById(id));
@@ -90,11 +90,11 @@ public class ProjectController {
 	}
 
 	// xoa san pham
-	@RequestMapping(value = "/user/category/product/{id}/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/product/{id}/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@PathVariable Long id) {
 		ModelAndView model = new ModelAndView();
 		Product product = productService.findById(id);
-		model.setViewName("redirect:/user/category/product/"+product.getCategory().getId()+"/list");		
+		model.setViewName("redirect:/category/product/"+product.getCategory().getId()+"/list");		
 		productService.delete(id);
 		return model;
 		

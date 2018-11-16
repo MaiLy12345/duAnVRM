@@ -21,9 +21,10 @@
 						<div class="panel-heading">Form Người Dùng</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<form action="#" th:action="@{/user/save}" th:object="${user}"
+							<form action="#" th:action="@{/user/update}" th:object="${user}"
 								method="POST">
-								<input type="hidden" th:field="*{id}" />
+								<input type="hidden" th:field="*{id}" /> <input type="hidden"
+									th:field="*{roles}" />
 								<div class="form-group">
 									<label>Email</label> <input type="email"
 										class="form-control" th:field="*{username}"
@@ -44,7 +45,7 @@
 										class="form-control" th:field="*{sdt}" th:required="required" />
 									<span class="error"></span>
 								</div>
-									<div class="form-group">
+								<div class="form-group">
 									<label>Chứng minh nhân dân</label> <input type="number"
 										class="form-control" th:field="*{cmnd}" th:required="required" />
 									<span class="error"></span>
@@ -93,7 +94,14 @@
 										class="error"></span>
 								</div>
 
+								<div class="form-group">
+									<label>Trạng thái</label> <select th:field="*{trangThai}"
+										class="form-control">
+										<option value="1">Hoạt động</option>
+										<option value="0">Vô hiệu hóa</option>
 
+									</select>
+								</div>
 
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-save"></i>Lưu

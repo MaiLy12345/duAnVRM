@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/login","/fogot-password","/newPassword/save","/reset").permitAll()
                     .antMatchers("/role/**").hasRole("ADMIN") 
                     .antMatchers("/user/**").hasRole("MANAGER")
-                    .antMatchers("/user/category/**").hasRole("DUAN")
+                    .antMatchers("/category/**").hasRole("DUAN")
                     .antMatchers("/product/nha-mua/**").hasRole("NHABAN")
                     .antMatchers("/product/cho-thue/**").hasRole("NHATHUE")
                     .and()

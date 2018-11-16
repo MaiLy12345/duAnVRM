@@ -1,9 +1,15 @@
 package com.hellokoding.auth.repository;
 
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
 import com.hellokoding.auth.model.Role;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-
-//khai lop tuong tac vơi csdl trong spring boot cho lop role
-public interface RoleRepository extends JpaRepository<Role, Long>{
+@Repository
+@Transactional
+public interface RoleRepository extends CrudRepository<Role, Long>{
+	
 }

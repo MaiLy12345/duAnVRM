@@ -46,16 +46,7 @@ public class ProductController {
 	}
 
 	
-	// luu san pham nha cho thue
-
-	@RequestMapping(value = "/product/cho-thuet/add", method = RequestMethod.GET)
-	public String listCategory(Model model) {
-		model.addAttribute("category_product", productservice.findAll());
-		return "admin/product_form";
-	}
-
-
-	@RequestMapping(value = "/product/cho-thuet/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/product/cho-thue/save", method = RequestMethod.POST)
     public String  save(@Valid Product product,RedirectAttributes redicert) {
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
@@ -97,7 +88,6 @@ public class ProductController {
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
 		product.setNgaytao(ft.format(date));
-		
 		product.setLoai("Nhaban");
 		productservice.save(product);
 		return "redirect:/product/nha-mua/list";

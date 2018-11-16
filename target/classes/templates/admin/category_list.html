@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="admin/layout :: head">
 <style type="text/css">
-
 </style>
 </head>
 <body>
@@ -19,7 +18,7 @@
 				<!-- /.col-sm-12 -->
 			</div>
 			<!-- /.row -->
-			<a style="margin: 5px" th:href="@{/user/category/add}"
+			<a style="margin: 5px" th:href="@{/category/add}"
 				class="btn btn-success">Tạo Dự Án</a>
 			<div class="row">
 				<div class="col-sm-12">
@@ -53,9 +52,10 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="catagorys : ${catagorys}" th:if="${catagorys.id}!=0">
+									<tr th:each="catagorys : ${catagorys}"
+										th:if="${catagorys.id}!=0">
 										<td th:text="${catagorys.id}"></td>
-										<td th:text="${catagorys.name}"></td>										
+										<td th:text="${catagorys.name}"></td>
 										<td th:text="${catagorys.diachi}"></td>
 										<td th:text="${catagorys.ngaytao}"></td>
 										<td th:text="${catagorys.phuongxa}"></td>
@@ -67,15 +67,16 @@
 													data-toggle="dropdown">
 													Tùy chọn <span class="caret"></span>
 												</button>
-												<ul class="dropdown-menu" style="min-width: 91px !important;">
+												<ul class="dropdown-menu"
+													style="min-width: 91px !important;">
 													<li><a
-														th:href="@{/user/category/{id}/edit(id=${catagorys.id})}"
+														th:href="@{/category/{id}/edit(id=${catagorys.id})}"
 														class="btn btn-default"> Sửa </a></li>
 													<li><a
-														th:href="@{/user/category/{id}/delete(id=${catagorys.id})}"
+														th:href="@{/category/{id}/delete(id=${catagorys.id})}"
 														class="btn btn-default"> Xóa </a></li>
-														<li><a
-														th:href="@{/user/category/product/{id}/list(id=${catagorys.id})}"
+													<li><a
+														th:href="@{/category/product/{id}/list(id=${catagorys.id})}"
 														class="btn btn-default">Xem</a></li>
 												</ul>
 											</div>

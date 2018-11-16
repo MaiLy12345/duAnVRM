@@ -20,13 +20,13 @@
 						<div class="panel-heading">Form Sản Phẩm</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<form action="#" th:action="@{/product/save}"
+							<form action="#" th:action="@{/product/cho-thue/save}"
 								th:object="${product}" method="POST">
 								<input type="hidden" class="form-control" th:field="*{id}" /> <input
 									type="hidden" class="form-control" value="0"
 									th:field="*{category}" />
 								<div class="form-group">
-<<<<<<< HEAD
+
 									<label> Thành Phố</label> <input type="text"
 										class="form-control" th:field="*{thanhpho}"
 										th:required="required" /> <span class="error"></span>
@@ -84,42 +84,10 @@
 									<label> Giá trị</label> <input type="number"
 										class="form-control" th:required="required" /> <span
 										class="error"></span>
-=======
-									<label> Mã</label> <input type="number" class="form-control"
-										th:field="*{id}" th:required="required" /> <span
-										class="error"></span>
+
+
 								</div>
-								<div class="form-group">
-									<label> Địa chỉ</label> <input type="text" class="form-control"
-										th:field="*{diachi}" th:required="required" /> <span
-										class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Thành Phố</label> <input type="text"
-										class="form-control" th:field="*{thanhpho}"
-										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Dài</label> <input type="number" class="form-control"
-										th:field="*{dai}" th:required="required" /> <span
-										class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Rộng</label> <input type="number" class="form-control"
-										th:field="*{rong}" th:required="required" /> <span
-										class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Đơn giá</label> <input type="number"
-										class="form-control" th:field="*{don_gia}"
-										th:required="required" /> <span class="error"></span>
-								</div>
-								<div class="form-group">
-									<label> Giá tri</label> <input type="number"
-										class="form-control" th:field="*{gia_tri}"
-										th:required="required" /> <span class="error"></span>
->>>>>>> 2f038cf4362dde66cb6dc73d42f3b0d3060ddfb3
-								</div>
+
 
 								<div class="form-group">
 									<label>Hiện Trạng</label> <select th:field="*{hientrang}"
@@ -134,8 +102,7 @@
 									<label> Pháp Lý</label> <input type="text" class="form-control"
 										th:field="*{phapli}" th:required="required" /> <span
 										class="error"></span>
-<<<<<<< HEAD
-								</div>
+								</div>		
 								<div class="form-group">
 									<label>Tên dự án</label> <select th:field="*{category.id}"
 										class="form-control" id="exampleFormControlSelect1">
@@ -143,21 +110,7 @@
 										<option value="0">Không</option>
 
 									</select>
-								</div>
-=======
-								</div>
-								<div class="form-group">
-									<label>Loại sản phẩm</label> 
-									<select th:field="*{category}"
-										class="form-control"  >
-										<option th:each="loaiSp:${category_product}" 
-										th:value="${loaiSp.id}"  th:text="${loaiSp.name}">
-										</option>
-										
-									
-									</select> <span class="error"></span>
-								</div>
->>>>>>> 2f038cf4362dde66cb6dc73d42f3b0d3060ddfb3
+								</div>					
 								<button type="submit" class="btn btn-primary">
 									<i class="fa fa-save"></i>Lưu
 								</button>
@@ -172,7 +125,7 @@
 			<!-- /.row -->
 		</div>
 		<!-- /#page-wrapper -->
-	
+
 	</div>
 
 </body>

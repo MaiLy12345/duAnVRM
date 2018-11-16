@@ -1,10 +1,14 @@
 package com.hellokoding.auth.web;
 
+import com.hellokoding.auth.model.Role;
 import com.hellokoding.auth.model.User;
 import com.hellokoding.auth.service.ProductService;
-import com.hellokoding.auth.service.SecurityService;
+import com.hellokoding.auth.service.RoleService;
 import com.hellokoding.auth.service.UserService;
-import com.hellokoding.auth.validator.UserValidator;
+import com.hellokoding.auth.service.categoryProductService;
+
+import java.util.Arrays;
+import java.util.HashSet;
 
 import javax.validation.Valid;
 
@@ -18,65 +22,76 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @Autowired
-    private SecurityService securityService;
-    
-    @Autowired
-    private ProductService productService;
-   
-  
+	@Autowired
+	private ProductService productService;
 
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String registration() {
-       
-        return "403";
-    }
+	@Autowired
+	private categoryProductService categoryService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+	@RequestMapping(value = "/403", method = RequestMethod.GET)
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+	public String registration() {
 
-        return "web/login";
-    }
+		return "403";
+	}
 
-    @RequestMapping(value = { "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        model.addAttribute("user1", userService.count());
-        model.addAttribute("product1", productService.count());
-        return "admin/dashboard";
-    }
-    
-    @RequestMapping(value = "/user/list", method = RequestMethod.GET)
-    public String userlist(Model model) {
-    	model.addAttribute("users", userService.findAll());
-    	return "admin/userlist";
-    }
-    
-    @RequestMapping(value = "/user/add", method = RequestMethod.GET)
-    public String useradd(Model model) {
-    	model.addAttribute("user", new User());
-    	return"admin/userform";
-    }
-    @RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
-    public String useredit(Model model,@PathVariable Long id) {
-    	model.addAttribute("user", userService.findById(id));
-    	return "admin/userform";
-    }
-    @RequestMapping(value = "/user/save", method = RequestMethod.POST)
-    public String usersave(@Valid User user, RedirectAttributes redirect) {
-    	userService.save(user);
-    	return "redirect:/user/list";
-    }
-    @RequestMapping(value = "/user/{id}/delete", method = RequestMethod.GET)
-    public String userdetete(@PathVariable Long id) {
-    	userService.delete(id);
-    	return "redirect:/user/list";
-    }
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model, String error, String logout) {
+		if (error != null)
+			model.addAttribute("error", "Your username and password is invalid.");
+
+		if (logout != null)
+			model.addAttribute("message", "You have been logged out successfully.");
+
+		return "web/login";
+	}
+
+	@RequestMapping(value = { "/welcome" }, method = RequestMethod.GET)
+	public String welcome(Model model) {
+		model.addAttribute("user1", userService.count());
+		model.addAttribute("product1", productService.count());
+		model.addAttribute("cate", categoryService.count());
+		return "admin/dashboard";
+	}
+
+	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
+	public String userlist(Model model) {
+		model.addAttribute("users", userService.findAll());
+		return "admin/userlist";
+	}
+
+	@RequestMapping(value = "/user/add", method = RequestMethod.GET)
+	public String useradd(Model model) {
+		model.addAttribute("user", new User());
+		return "admin/userform";
+	}
+
+	@RequestMapping(value = "/user/{id}/edit", method = RequestMethod.GET)
+	public String useredit(Model model, @PathVariable Long id) {
+		model.addAttribute("user", userService.findById(id));
+		return "admin/user_update";
+	}
+
+	@RequestMapping(value = "/user/save", method = RequestMethod.POST)
+	public String usersave(@Valid User user, RedirectAttributes redirect) {
+		user.setTrangThai(true);
+		user.setRoles(null);
+		userService.save(user);
+		return "redirect:/user/list";
+	}
+
+	@RequestMapping(value = "/user/update")
+	public String userUpdate(@Valid User user) {
+		userService.save(user);
+		return "redirect:/user/list";
+	}
+
+	@RequestMapping(value = "/user/{id}/delete", method = RequestMethod.GET)
+	public String userdetete(@PathVariable Long id) {
+		userService.delete(id);
+		return "redirect:/user/list";
+	}
 }
