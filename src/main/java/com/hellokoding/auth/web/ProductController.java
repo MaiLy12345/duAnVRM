@@ -48,7 +48,7 @@ public class ProductController {
 	
 	// luu san pham nha cho thue
 
-<<<<<<< HEAD
+
 /*	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
 =======
 	@RequestMapping(value = "/product/cho-thuet/add", method = RequestMethod.GET)
@@ -89,6 +89,15 @@ public class ProductController {
 		model.addAttribute("products", productservice.findAll());
 		return "admin/product_list_hombuy";
 	}
+	
+	//danh sach san pham nha cho mua 
+	@RequestMapping(value="/product/nha-mua/list1")
+	public String listHomeBuy1(Model model) {
+		model.addAttribute("products", productservice.findAll());
+		return "admin/fill";
+	}
+	
+	
 	//chuyen toi form them san pham
 	@RequestMapping(value="/product/nha-mua/add")
 	public String addHomeBuy(Model model) {
