@@ -18,7 +18,7 @@ public class MailConfig {
 	     mailSender.setPort(587);
 
 	     mailSender.setUsername("anhdvpd01920@fpt.edu.vn");
-	     mailSender.setPassword("anhvupt12301");
+	     mailSender.setPassword("");
 
 	     Properties props = mailSender.getJavaMailProperties();
 	     props.put("mail.transport.protocol", "smtp");

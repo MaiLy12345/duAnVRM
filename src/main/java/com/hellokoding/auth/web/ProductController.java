@@ -46,7 +46,24 @@ public class ProductController {
 	}
 
 	
+<<<<<<< HEAD
 	@RequestMapping(value = "/product/cho-thue/save", method = RequestMethod.POST)
+=======
+	// luu san pham nha cho thue
+
+<<<<<<< HEAD
+/*	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
+=======
+	@RequestMapping(value = "/product/cho-thuet/add", method = RequestMethod.GET)
+>>>>>>> 3d3710520808655e86f2af5ec184c2f03444ae51
+	public String listCategory(Model model) {
+		model.addAttribute("category_product", productservice.findAll());
+		return "admin/product_form";
+	}*/
+
+
+	@RequestMapping(value = "/product/cho-thuet/save", method = RequestMethod.POST)
+>>>>>>> e6625e6d8fdd79aacc6c2e8898ccbbf4723b4fd2
     public String  save(@Valid Product product,RedirectAttributes redicert) {
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
