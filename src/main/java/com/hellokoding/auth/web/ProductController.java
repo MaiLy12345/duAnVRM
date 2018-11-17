@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.hellokoding.auth.model.Product;
 import com.hellokoding.auth.service.ProductService;
 import com.hellokoding.auth.service.categoryProductService;
-
-
-
 
 @Controller
 public class ProductController {
@@ -45,46 +43,37 @@ public class ProductController {
 		return "admin/product_form";
 	}
 
-	
-<<<<<<< HEAD
 	@RequestMapping(value = "/product/cho-thue/save", method = RequestMethod.POST)
-=======
-	// luu san pham nha cho thue
-
-<<<<<<< HEAD
-/*	@RequestMapping(value = "/product/add", method = RequestMethod.GET)
-=======
-	@RequestMapping(value = "/product/cho-thuet/add", method = RequestMethod.GET)
->>>>>>> 3d3710520808655e86f2af5ec184c2f03444ae51
-	public String listCategory(Model model) {
-		model.addAttribute("category_product", productservice.findAll());
-		return "admin/product_form";
-	}*/
-
-
-	@RequestMapping(value = "/product/cho-thuet/save", method = RequestMethod.POST)
->>>>>>> e6625e6d8fdd79aacc6c2e8898ccbbf4723b4fd2
-    public String  save(@Valid Product product,RedirectAttributes redicert) {
+    public String  save(@Valid Product product,RedirectAttributes redicert,@PathParam("id") Long id) {
+		
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
 		product.setNgaytao(ft.format(date));
-		product.setLoai("Nhachothue");
+		product.setLoai("Nhachothue");	
 		productservice.save(product);
-		return "redirect:/product/list";
-    }
+		return "redirect:/product/cho-thue/list";
+    
+	}
+
 	
 	// sua san pham nha cho thue
 	@RequestMapping(value = "/product/cho-thue/{id}/edit", method = RequestMethod.GET)
     public String edit(@PathVariable Long id, Model model) {		
 	   model.addAttribute("product", productservice.findById(id));
-	   return "admin/product_form";
+	   return "admin/product_update";
     }
+	
+	@RequestMapping(value = "/product/cho-thue/update", method = RequestMethod.POST)
+    public String  update(@Valid Product product) {		
+		productservice.save(product);
+		return "redirect:/product/cho-thue/list";    
+	}
 	
 	// xoa san pham nha cho thue
 	@RequestMapping(value = "/product/cho-thue/{id}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable Long id,RedirectAttributes redicert) {
 	   productservice.delete(id);
-	   return "redirect:/product/list";
+	   return "redirect:/product/cho-thue/list";
      }
 	
 	//danh sach san pham nha cho mua 
@@ -101,27 +90,32 @@ public class ProductController {
 	}
 	// them nha cho mua 
 	@RequestMapping(value="/product/nha-mua/save", method = RequestMethod.POST)
-	public String saveHomeBuy(@Valid Product product,Model model) {
+	public String saveHomeBuy(@Valid Product product,Model model) {		
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
 		product.setNgaytao(ft.format(date));
-		product.setLoai("Nhaban");
-		productservice.save(product);
+		product.setLoai("Nhaban");				
+		productservice.save(product);		
 		return "redirect:/product/nha-mua/list";
 	}
 	// sua san pham nha cho mua
 	@RequestMapping(value="/product/nha-mua/{id}/edit")
 	public String editHomeBuy(@PathVariable Long id, Model model) {
 		model.addAttribute("product", productservice.findById(id));
-		return "admin/product_form_homebuy";
+		return "admin/product_homebuy_update";
 	}
 	
+	@RequestMapping(value="/product/nha-mua/update", method = RequestMethod.POST)
+	public String updateHomeBuy(@Valid Product product,Model model) {							
+		productservice.save(product);		
+		return "redirect:/product/nha-mua/list";
+	}
+
 	// xoa san pham nha cho mua
 	@RequestMapping(value="/product/nha-mua/{id}/delete")
 	public String deleteHomBuy(@PathVariable Long id) {
 		productservice.delete(id);
 		return "redirect:/product/nha-mua/list";
 	}
-
 	
 }
