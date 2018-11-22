@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/login","/fogot-password","/newPassword/save","/reset").permitAll()
+                    .antMatchers("/login","/fogot-password","/newPassword/save","/reset","/search").permitAll()
                     .antMatchers("/role/**").hasRole("ADMIN") 
                     .antMatchers("/user/**").hasRole("MANAGER")
                     .antMatchers("/category/**").hasRole("DUAN")

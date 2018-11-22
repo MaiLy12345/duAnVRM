@@ -40,22 +40,22 @@ public class Product {
 	private String thanhpho;
 
 	@Column(name = "dai")
-	private float dai;
+	private Long dai;
 
 	@Column(name = "rong")
-	private float rong;
+	private Long rong;
 
 	@Column(name = "dientich")
-	private float dientich;
+	private Long dientich;
 
 	@Column(name = "huong") // danh cho nha ban va nha cho thue
 	private String huong;
 
 	@Column(name = "dongia")
-	private float dongia;
+	private Long dongia;
 
 	@Column(name = "giatri")
-	private float giatri;
+	private Long giatri;
 
 	@Column(name = "phapli")
 	private String phapli;
@@ -139,27 +139,27 @@ public class Product {
 		this.thanhpho = thanhpho;
 	}
 
-	public float getDai() {
+	public Long getDai() {
 		return dai;
 	}
 
-	public void setDai(float dai) {
+	public void setDai(Long dai) {
 		this.dai = dai;
 	}
 
-	public float getRong() {
+	public Long getRong() {
 		return rong;
 	}
 
-	public void setRong(float rong) {
+	public void setRong(Long rong) {
 		this.rong = rong;
 	}
 
-	public float getDientich() {
+	public Long getDientich() {
 		return dientich;
 	}
 
-	public void setDientich(float dientich) {
+	public void setDientich(Long dientich) {
 		this.dientich = dientich;
 	}
 
@@ -171,19 +171,19 @@ public class Product {
 		this.huong = huong;
 	}
 
-	public float getDongia() {
+	public Long getDongia() {
 		return dongia;
 	}
 
-	public void setDongia(float dongia) {
+	public void setDongia(Long dongia) {
 		this.dongia = dongia;
 	}
 
-	public float getGiatri() {
+	public Long getGiatri() {
 		return giatri;
 	}
 
-	public void setGiatri(float giatri) {
+	public void setGiatri(Long giatri) {
 		this.giatri = giatri;
 	}
 
@@ -219,4 +219,6 @@ public class Product {
 		this.category = category;
 	}
 
+	
+	
 }
