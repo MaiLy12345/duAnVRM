@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="admin/layout :: head"></head>
 <body>
 
@@ -74,8 +75,8 @@
 															<li><a
 																th:href="@{/user/{id}/delete(id=${users.id})}"
 																class="btn btn-default"> Xóa </a></li>
-															<li><a th:href="@{/role/{id}(id=${users.id})}"
-																class="btn btn-default">Phân quyền</a></li>
+															<th:block sec:authorize="hasAuthority('ADMIN')"><li><a th:href="@{/role/{id}(id=${users.id})}"
+																class="btn btn-default">Phân quyền</a></li></th:block>
 														</ul>
 													</div>
 												</td>

@@ -62,6 +62,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<!-- dev tools-->
+		<dependency>
+			<groupId> org.springframework.boot </groupId>
+			<artifactId> spring-boot-devtools </artifactId>
+			<optional>true</optional>
+		</dependency>
 		<!-- WEBJARS -->
 		<dependency>
 			<groupId>org.webjars</groupId>

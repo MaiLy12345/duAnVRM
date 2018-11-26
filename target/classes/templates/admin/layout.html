@@ -78,12 +78,11 @@
 
 			<ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#" th:inline="text"> Xin chào <i
+					data-toggle="dropdown" href="#" th:inline="text" ><span sec:authentication="name"></span>  <i
 						class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a> <i class="fa fa-globe fa-fw"></i> Visit website
-						</a></li>
+						
 						<li><a th:href="@{/logout}"> <i
 								class="fa fa-sign-out fa-fw"></i> Đăng xuất
 						</a></li>
@@ -98,17 +97,17 @@
 						<li><a th:href="@{/welcome}"> <i
 								class="fa fa-dashboard fa-fw"></i> Trang chủ
 						</a></li>
-						<li><a th:href="@{/user/list}"> <i
+					<th:block sec:authorize="hasAuthority('MANAGER')"><li><a th:href="@{/user/list}"> <i
 								class="fa fa-user fa-fw"></i> Quản lý người dùng
 
-						</a></li>
+						</a></li></th:block>
 
 						<li><a> <i class="glyphicon glyphicon-home"></i> Quản lý
 								sản phẩm <span class="fa arrow"></span></a>
 							<ul class="nav nav-second-level collapse">
-								<li><a th:href="@{/category/list}">Dự án</a></li>
-								<li><a th:href="@{/product/cho-thue/list}">Nhà cho thuê</a></li>
-								<li><a th:href="@{/product/nha-mua/list}">Nhà bán</a></li>
+							<th:block sec:authorize="hasAuthority('DUAN')"><li><a th:href="@{/category/list}">Dự án</a></li></th:block>
+							<th:block sec:authorize="hasAuthority('NHATHUE')"><li><a th:href="@{/product/cho-thue/list}">Nhà cho thuê</a></li></th:block>
+							<th:block sec:authorize="hasAuthority('NHABAN')"><li><a th:href="@{/product/nha-mua/list}">Nhà bán</a></li></th:block>
 							</ul></li>
 
 
