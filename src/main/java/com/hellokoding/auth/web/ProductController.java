@@ -134,7 +134,7 @@ public class ProductController {
 	}
 	
 //	 tim kiem san pham theo gia va dien tich
-	@RequestMapping(value="/search", method= RequestMethod.GET)
+	@RequestMapping(value="/search-chothue", method= RequestMethod.GET)
 		public String Search(Model model, @RequestParam(name="giatri",required=false) Long giatri, @RequestParam(name="dientich",required=false) Long dientich,
 		@RequestParam(name="huong",required=false) String huong, @RequestParam(name="thanhpho",required=false) String thanhpho, 
 			@RequestParam(name="quanhuyen", required=false) String quanhuyen,@RequestParam Map<String, String> requestParams ) {		
@@ -166,7 +166,43 @@ public class ProductController {
 		model.addAttribute("products", productRepository.finByGiaAndDienTichAndThanhPhoAndHuyenAndHuong(giatri, dientich, 
 			thanhpho, quanhuyen, huong));	
 		}
-		return "admin/fitter";
+		return "admin/product_list";
+	}
+	
+	@RequestMapping(value="/search-nhaban", method= RequestMethod.GET)
+	public String SearchNhaBan(Model model, @RequestParam(name="giatri",required=false) Long giatri, @RequestParam(name="dientich",required=false) Long dientich,
+		@RequestParam(name="huong",required=false) String huong, @RequestParam(name="thanhpho",required=false) String thanhpho, 
+			@RequestParam(name="quanhuyen", required=false) String quanhuyen,@RequestParam Map<String, String> requestParams) {
+		
+		String th = requestParams.get("thanhpho");
+		String qh = requestParams.get("quanhuyen");
+		String hg = requestParams.get("huong");
+		if(th.equals("th") && hg.equals("hg") && qh.equals("qh")) {
+			// dien tich, gia
+			model.addAttribute("products", productRepository.finByGiaAndDienTich(giatri, dientich));	
+			
+		}else if(th.equals("th") && qh.equals("qh") ) {
+			// dien tich, gia, huong
+			model.addAttribute("products", productRepository.finByGiaAndDienTichAndHuong(giatri, dientich, huong));	
+			
+		}else if(hg.equals("hg") && qh.equals("qh") ) {
+			// dien tich, gia, thanhpho
+			model.addAttribute("products", productRepository.finByGiaAndDienTichAndThanhPho(giatri, dientich, thanhpho));	
+			
+		}else if(qh.equals("qh")) {
+			//gia tri, huong, dien tich, thanh pho
+			model.addAttribute("products",productRepository.finByGiaAndDienTichAndThanhPhoAndHuong(giatri, dientich, thanhpho, huong) );
+			
+		}else if(hg.equals("hg")) {
+			// dien tich, gia, thanhpho, quanhuyen
+			model.addAttribute("products", productRepository.finByGiaAndDienTichAndThanhPhoAndHuyen(giatri, dientich, thanhpho, quanhuyen));	
+			
+		}else{
+		model.addAttribute("products", productRepository.finByGiaAndDienTichAndThanhPhoAndHuyenAndHuong(giatri, dientich, 
+			thanhpho, quanhuyen, huong));	
+		}
+		
+		return "admin/product_list_hombuy";
 	}
 	
 	

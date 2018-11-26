@@ -1,88 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  
-   <link rel="stylesheet" th:href="@{//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}"/>
-  
-   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
- 
-   <script th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
- 
+
+<link rel="stylesheet"
+	th:href="@{//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css}" />
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script
+	th:src="@{//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+
 </head>
 <body>
-	
-<button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >Add</button>
-<table  class="table table-striped table-bordered" id="employeesTable">
-<thead>
-<tr>
-<th >id</th>
-<th >name</th>
-<th >capital</th>
-<th >upd</th>
-<th >del</th>
 
-</tr>
+	<button type="submit" class="btn btn-primary" data-toggle="modal"
+		data-target="#exampleModal">Add</button>
+	<table class="table table-striped table-bordered" id="employeesTable">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>capital</th>
+				<th>upd</th>
+				<th>del</th>
 
-</thead>
+			</tr>
 
-<tbody>
+		</thead>
 
-</tbody>
-</table>
+		<tbody>
+				<tr th:each="product : ${products}">
+				   <td th:text="${product.id}"></td>
+				 
+				</tr>
+		</tbody>
+	</table>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      	
-        <h2 class="modal-title" id="exampleModalLabel">Tìm kiếm</h2>
-        <button type="submit" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form  method="post">
-   <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Loại bất động sản:</label>
-            <select class="form-control">
-            <option value="-1">Loại</option>
-            <option value="muaban"> Mua bán</option>
-             <option value="duan"> Dự án</option>
-              <option value="chothue"> Cho thuê</option>
-            </select>
-          </div>
-         
-             <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Diện tích:</label>
-            <select class="form-control" >
-            <option value="-1">Diện tích</option>
-            <option value="Đà Nẵng"> Đà nẵng</option>
-            <option value="HCM"> HCM</option>
-            </select>
-          </div>
-             <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Giá:</label>
-            <select class="form-control" >
-            <option value="-1">Thành phố</option>
-            <option value="Đà Nẵng"> Đà nẵng</option>
-            <option value="HCM"> HCM</option>
-            </select>
-          </div>
-             <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Hướng:</label>
-            <select class="form-control" >
-            <option value="-1">Thành phố</option>
-            <option value="Đà Nẵng"> Đà nẵng</option>
-            <option value="HCM"> HCM</option>
-            </select>
-          </div>
-           <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-        </form>
-      </div>
-     
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<h2 class="modal-title" id="exampleModalLabel">Tìm kiếm</h2>
+					<button type="submit" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form method="get" th:action="@{/search}">
+						<div class="form-group" >
+
+							<select class="form-control" name="huong">
+								<option value="hg">Hướng</option>
+								<option>Đông</option>
+								<option>Tây</option>
+								<option>Nam</option>
+								<option>Bắc</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+
+							<select class="form-control" name="dientich">
+								<option value="0">Diện tích</option>
+								<option>100</option>
+								<option>200</option>
+							</select>
+						</div>
+						<div class="form-group">
+
+							<select class="form-control" name="giatri">
+								<option value="0">Giá Trị</option>
+								<option>10</option>
+								<option>100</option>
+								<option>1000</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select class="form-control" name="thanhpho">
+								<option value="th">Thành phố</option>
+								<option>Đà Nẵng</option>
+								<option>Tp.Hồ Chí Minh</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select class="form-control" name="quanhuyen">
+								<option value="qh">Quận huyện</option>
+								<option>Liên Chiểu</option>
+								<option>Hải Châu</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary">Tìm kiếm</button>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 </body>
 </html>

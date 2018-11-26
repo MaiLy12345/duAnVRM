@@ -89,7 +89,7 @@ public class PassWordController {
 			userService.save(restUser);
 			redir.addFlashAttribute("thanhcong", "Bạn đã mật khẩu, có thể đăng nhập bây giờ");
 			model.setViewName("redirect:/login");
-			model.setViewName("web/rest-password");
+			
 		}
 
 		return model;
